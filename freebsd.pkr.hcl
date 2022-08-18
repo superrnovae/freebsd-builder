@@ -89,7 +89,7 @@ locals {
     var.architecture == "arm64" ? "arm64-aarch64" : var.architecture
   )
   vm_name = "freebsd-${var.os_version}-${var.architecture}.qcow2"
-  iso_path = "FreeBSD/releases/ISO-IMAGES/${var.os_version}/FreeBSD-${var.os_version}-RELEASE-${local.image_architecture}-disc1.iso"
+  iso_path = "releases/ISO-IMAGES/${var.os_version}/FreeBSD-${var.os_version}-RELEASE-${local.image_architecture}-disc1.iso"
   qemu_architecture = var.architecture == "arm64" ? "aarch64" : (
     var.architecture == "x86-64" ? "x86_64" : var.architecture
   )
@@ -137,16 +137,16 @@ source "qemu" "qemu" {
 
   iso_checksum = var.checksum
   iso_urls = [
-    "http://ftp.freebsd.org/pub/${local.iso_path}",
-    "http://ftp4.se.freebsd.org/pub/${local.iso_path}",
-    "http://ftp2.de.freebsd.org/pub/${local.iso_path}",
-    "http://ftp.lv.freebsd.org/pub/${local.iso_path}",
-    "http://ftp4.us.freebsd.org/pub/${local.iso_path}",
-    "http://ftp13.us.freebsd.org/pub/${local.iso_path}",
-    "http://ftp6.tw.freebsd.org/pub/${local.iso_path}",
-    "http://ftp11.tw.freebsd.org/${local.iso_path}",
-    "http://ftp2.br.freebsd.org/${local.iso_path}",
-    "http://ftp.at.freebsd.org/pub/${local.iso_path}"
+    "http://ftp.freebsd.org/${local.iso_path}",
+    "http://ftp4.se.freebsd.org/pub/FreeBSD/${local.iso_path}",
+    "http://ftp2.de.freebsd.org/pub/FreeBSD/${local.iso_path}",
+    "http://ftp.lv.freebsd.org/FreeBSD/${local.iso_path}",
+    "http://ftp4.us.freebsd.org/pub/FreeBSD/${local.iso_path}",
+    "http://ftp2.gr.freebsd.org/pub/FreeBSD/${local.iso_path}",
+    "http://ftp.at.freebsd.org/pub/FreeBSD/${local.iso_path}",
+    "http://ftp.nl.freebsd.org/pub/FreeBSD/${local.iso_path}",
+    "http://ftp2.nl.freebsd.org/freebsd/${local.iso_path}",
+    "http://ftp.pl.freebsd.org/pub/FreeBSD/${local.iso_path}"
   ]
 
   http_directory = "."
